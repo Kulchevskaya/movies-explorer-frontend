@@ -1,0 +1,146 @@
+.form {
+  min-height: 100%;
+  max-width: 396px;
+  width: 100%;
+  margin: 70px auto;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form__logo {
+  width: 38px;
+  height: 38px; 
+  margin: 0;
+  background-image: url(../../images/logo.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form__heading {
+  margin: 40px 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.form__field {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+}
+
+.form__item {
+  border: 0;
+  padding: 0;
+  width: 100%;
+  height: 35px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(229, 229, 229, .8);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px; 
+  font-family: inherit;
+  margin-bottom: 24px;
+  box-shadow: inset 0 0 0 50px rgb(255, 255, 255);
+}
+
+.form-item_type_email-input {
+  font-weight: 500;
+}
+
+/* уберем выделение голубым при выборе */
+.form__item:focus {
+  outline: none;
+}
+
+.form__submit-button {
+  width: 100%;
+  border: 0;
+  margin: 0 0 16px;
+  padding: 13px 0 15px;
+  color: white;
+  background-color: rgba(52, 86, 243, 1);
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  font-family: inherit;  
+}
+
+.form__submit-button_type_register {
+  margin-top: 129px;
+}
+
+.form__submit-button_type_login {
+  margin-top: 221px;
+}
+
+.form__submit-button:hover {
+  background-color: rgba(52, 86, 243, .85);
+  cursor: pointer;
+}
+
+.form__sign {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form__sign-text {
+  margin: 0 5px 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  font-family: inherit;
+  color: #A0A0A0;
+}
+
+.form__sign-link {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  font-family: inherit;
+  color: #3456F3;
+  text-align: center;
+}
+
+.form__sign-link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media (min-width: 320px) and (max-width: 450px) {
+  .form {
+    max-width: 260px;
+    margin-top: 56px;
+  }
+
+  .form__logo {
+    align-self: center;
+  }
+
+  .form__heading {
+    margin: 50px auto 80px;
+  }
+
+  .form__submit-button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__sign-text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__sign-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
