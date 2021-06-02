@@ -31,9 +31,13 @@
   font-family: inherit;
 }
 
+.SearchForm__item:focus {
+  outline: none;
+}
+
 .SearchForm__submit-button {
   height: 48px;
-  width: calc((100vw - 140px - 10px) * 0.1);
+  width: 70px;
   border: 0;
   border-radius: 4px;
   margin: 0;
@@ -101,12 +105,9 @@
   }
 
   .SearchForm__item {
-    width: calc((100vw - 100px - 10px) * 0.9);
+    width: calc(100vw - 100px - 10px - 70px);
   }
   
-  .SearchForm__submit-button {
-    width: calc((100vw - 100px - 10px) * 0.1);
-  }
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
@@ -115,10 +116,6 @@
   }
 
   .SearchForm__item {
-    width: calc((100vw - 36px - 10px) * 0.73);
-  }
-  
-  .SearchForm__submit-button {
-    width: calc((100vw - 36px - 10px) * 0.27);
+    width: calc(100vw - 36px - 10px - 70px);
   }
 }

@@ -6,6 +6,10 @@
   background-color: #FAFAFA;
 }
 
+.header_type_logout {
+  background-color: #DDDEE3;
+}
+
 .header__container {
   max-width: calc(100vw - 140px);
   width: 100%;
@@ -13,6 +17,7 @@
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header__logo {
@@ -22,6 +27,33 @@
   background-image: url(../../images/logo.svg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.header__registration {
+  display: inline-block;
+  margin: 0 30px 0 0;
+  padding-top: 8px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header__login {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 20px;
+
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  background-color: #3456F3;
+  background-size: 100%;
+  border-radius: 3px;
 }
 
 .header__menu {
@@ -207,5 +239,17 @@
 @media (min-width: 320px) and (max-width: 767px) {
   .header__container {
     max-width: calc(100vw - 36px);
+  }
+
+  .header__registration {
+    margin: 0 14px 0 0;
+    padding-top: 5px;
+    font-weight: 500;
+    font-size: 10px;
+  }
+
+  .header__login {
+    padding: 5px 12px;
+    font-size: 10px;
   }
 }

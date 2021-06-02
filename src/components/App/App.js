@@ -37,10 +37,10 @@ function App() {
             <Header />
             <Profile />
           </Route>
-          <Route path="/signin">
+          <Route path="/signup">
             <Login />
           </Route>
-          <Route path="/signup">
+          <Route path="/signin">
             <Register />
           </Route>
           <Route component={Page404} />

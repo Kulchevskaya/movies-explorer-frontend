@@ -6,6 +6,7 @@ function Header(props) {
   const ROUTE_MAIN = '/';
   const ROUTE_MOVIES = '/movies';
   const ROUTE_SAVED_MOVIES = '/saved-movies';
+
   const movies = (
     `header__menu-films ${window.location.pathname === ROUTE_MOVIES ? 'header__bold-item' : ''}`
   )
@@ -32,7 +33,25 @@ function Header(props) {
     return _ => window.removeEventListener('resize', handleResize);
   }, [width]);
 
-  if (width >= 769) {
+  if (window.location.pathname === ROUTE_MAIN) {
+    return (
+      <div className="header header_type_logout">
+        <div className="header__container">
+          <Link to="/"><div className="header__logo"></div></Link>
+          <ul className="header__menu">
+            <li>
+              <Link className="header__registration" to="/signin">Регистрация</Link>
+            </li>
+            <li>
+              <Link className="header__login" to="/signup">Войти</Link>
+            </li>        
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
+  if (width >= 769 && window.location.pathname !== ROUTE_MAIN) {
     return (
       <div className="header">
         <div className="header__container">
@@ -53,7 +72,7 @@ function Header(props) {
     )
   }
   
-  if (width < 769) {
+  if (width < 769 && window.location.pathname !== ROUTE_MAIN) {
     return (
       <div className="header">
         <div className="header__container">
