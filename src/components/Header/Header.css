@@ -1,8 +1,15 @@
 .header {
+  margin: 0 auto;
+  width: 100%;
+  padding: 18px 0;
+
+  background-color: #FAFAFA;
+}
+
+.header__container {
   max-width: calc(100vw - 140px);
   width: 100%;
   margin: auto;
-  padding: 18px 0;
 
   display: flex;
   justify-content: space-between;
@@ -29,7 +36,7 @@
 
   text-decoration: none;
   color: black;
-  font-weight: 500;
+  font-weight: normal;
   font-size: 14px;
   line-height: 18px;
 }
@@ -45,6 +52,11 @@
   font-size: 14px;
   line-height: 18px;
 }
+
+.header__bold-item {
+  font-weight: 500;
+}
+
 
 .header__menu-account {
   display: inline-block;
@@ -187,13 +199,13 @@
 }
 
 @media (min-width: 768px) and (max-width: 1000px) {
-  .header {
+  .header__container {
     max-width: calc(100vw - 100px);
   }
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-  .header {
+  .header__container {
     max-width: calc(100vw - 36px);
   }
 }

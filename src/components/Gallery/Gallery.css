@@ -1,8 +1,7 @@
 .gallery {
   max-width: calc(100vw - 140px);
   width: 100%;
-  margin: auto;
-  
+  margin: 0 auto 50px;
 }
 
 .cards {
@@ -55,6 +54,24 @@
 
 .cards__like_active {
   background-image: url(../../images/likeactive.svg);
+}
+
+.cards__dislike {
+  max-width: 24px;
+  max-height: 24px;
+  padding: 12px 12px; 
+  box-shadow: none;
+  background: none;
+  border: none;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: center;
+}
+
+.cards__dislike:hover {
+  background-image: url(../../images/delete.svg);
+  cursor: pointer;
 }
 
 .cards__line {

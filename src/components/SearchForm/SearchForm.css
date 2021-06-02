@@ -47,6 +47,10 @@
   font-family: inherit;
 }
 
+.SearchForm__submit-button:hover {
+  opacity: 0.8;
+}
+
 .SearchForm__checkbox {
   position: relative;
   appearance: none; 
@@ -93,28 +97,28 @@
 
 @media (min-width: 768px) and (max-width: 1000px) { 
   .SearchForm__container {
-    max-width: calc(100vw - 60px);
+    max-width: calc(100vw - 100px);
   }
 
   .SearchForm__item {
-    width: calc((100vw - 60px - 10px) * 0.9);
+    width: calc((100vw - 100px - 10px) * 0.9);
   }
   
   .SearchForm__submit-button {
-    width: calc((100vw - 60px - 10px) * 0.1);
+    width: calc((100vw - 100px - 10px) * 0.1);
   }
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
   .SearchForm__container {
-    max-width: calc(100vw - 28px);
+    max-width: calc(100vw - 36px);
   }
 
   .SearchForm__item {
-    width: calc((100vw - 28px - 10px) * 0.73);
+    width: calc((100vw - 36px - 10px) * 0.73);
   }
   
   .SearchForm__submit-button {
-    width: calc((100vw - 28px - 10px) * 0.27);
+    width: calc((100vw - 36px - 10px) * 0.27);
   }
 }
