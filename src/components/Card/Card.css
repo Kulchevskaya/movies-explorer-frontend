@@ -1,31 +1,3 @@
-.gallery {
-  max-width: calc(100vw - 140px);
-  width: 100%;
-  margin: 0 auto 50px;
-}
-
-.gallery__noresult {
-  margin: 0;
-  width: 100%;
-  font-size: 15px;
-  font-weight: 400;
-  text-align: center;
-}
-
-.gallery__more-button {
-  width: 100%;
-  border: 0;
-  margin: 50px 0 80px;
-  padding: 10px 0;
-  color: black;
-  background-color: #F4F4F4;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 15px;
-  text-align: center;
-  font-family: inherit; 
-}
-
 .cards {
   margin: 0 auto;
   padding: 0;
@@ -114,10 +86,6 @@
 }
 
 @media (min-width: 768px) and (max-width: 1000px) {
-  .gallery {
-    max-width: calc(100vw - 60px);
-  }
-
   .cards {
     grid-template-columns: repeat(auto-fill, 339px);
     gap: 30px 30px;
@@ -129,10 +97,6 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-  .gallery {
-    max-width: calc(100vw - 36px);
-  }
-
   .cards {
     grid-template-columns: repeat(auto-fill, 300px);
     gap: 34px 30px;

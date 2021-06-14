@@ -33,7 +33,7 @@ function Header(props) {
     return _ => window.removeEventListener('resize', handleResize);
   }, [width]);
 
-  if (window.location.pathname === ROUTE_MAIN) {
+  if (!props.loggedIn) {
     return (
       <div className="header header_type_logout">
         <div className="header__container">
@@ -51,7 +51,7 @@ function Header(props) {
     )
   }
 
-  if (width >= 769 && window.location.pathname !== ROUTE_MAIN) {
+  if (width >= 769 && props.loggedIn) {
     return (
       <div className="header">
         <div className="header__container">
@@ -72,7 +72,7 @@ function Header(props) {
     )
   }
   
-  if (width < 769 && window.location.pathname !== ROUTE_MAIN) {
+  if (width < 769 && props.loggedIn) {
     return (
       <div className="header">
         <div className="header__container">
@@ -84,10 +84,10 @@ function Header(props) {
             </label>
 
             <ul className="header__hamburger-list">
-              <li><a className={hamburger_main} href="/">Главная</a></li>
-              <li><a className={hamburger_movies} href="/movies">Фильмы</a></li>
-              <li><a className={hamburger_saved_movies} href="/saved-movies">Сохраненные фильмы</a></li>
-              <li><a className="header__hamburger-button" href="/profile">Аккаунт</a></li>
+              <li><Link className={hamburger_main} to="/">Главная</Link></li>
+              <li><Link className={hamburger_movies} to="/movies">Фильмы</Link></li>
+              <li><Link className={hamburger_saved_movies} to="/saved-movies">Сохраненные фильмы</Link></li>
+              <li><Link className="header__hamburger-button" to="/profile">Аккаунт</Link></li>
             </ul>
           </div>
         </div>

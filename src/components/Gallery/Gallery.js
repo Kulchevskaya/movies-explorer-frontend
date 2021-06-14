@@ -1,45 +1,92 @@
+import React from 'react';
+import { useRouteMatch } from "react-router-dom";
+import Card from '../Card/Card.js';
+
 function Gallery(props) {
+  const savedMoviesMatch = useRouteMatch("/saved-movies");
+
+  // количество отображаемых фильмов при поиске
+  const [index, setIndex] = React.useState(12);
+  const isMobile = () => {
+    if (window.innerWidth < 767) {
+      return true
+    } else {
+      return false
+    }
+  }
+  const isTablet = () => {
+    if (window.innerWidth < 1280) {
+      return true
+    } else {
+      return false
+    }
+  }
+  const isDesktop = () => {
+    if (window.innerWidth > 1280) {
+      return true
+    } else {
+      return false
+    }
+  }
+  function downloadMovies() {
+    if (isMobile()) {
+      setIndex(index + 2);
+    } else if (isTablet()) {
+      setIndex(index + 2)
+    } else if (isDesktop()) {
+      setIndex(index + 3);
+    }
+  }
+  React.useEffect(() => {
+    if (isMobile()) {
+      setIndex(5);
+    } else if (isTablet()) {
+      setIndex(8);
+    } else {
+      setIndex(12);
+    }
+  }, []);
+
+  const moviesList = props.movies.map((movie, i) => {
+    while (i < index) {
+      if (props.checked && movie.duration > 40) {
+        return [];
+      } else {
+        return (<Card
+        savedMovies={props.savedMovies}
+        movie={movie} key={savedMoviesMatch ? movie.movieId : movie.id}
+        movies={props.movies}
+        saveMovie={(data) => props.saveMovie(data)}
+        deleteMovie={(movieId) => props.deleteMovie(movieId)}
+        onCardImageClick={props.onCardImageClick} />)}
+      };
+  });
+
+  function showMoreButton() {
+    const hidden = {display: 'none'};
+    if (moviesList.length < index) {
+      return hidden
+    }
+  }
+
+  function showNotFoundTitle() {
+    const hidden = {display: 'none'};
+    const visible = {display: 'block'}
+    if (moviesList.length > 0) {
+      return hidden
+    } else {
+      return visible;
+    }
+  }     
+
   return (
     <section className="gallery">
+      <h2 style={showNotFoundTitle()} className="gallery__noresult">По вашему запросу ничего не найдено</h2>
       <ul className="cards">
-        <li className="cards__item">
-          <img className="cards__image" src="https://images.unsplash.com/photo-1622267607558-624272280d48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" alt="poster"/>
-          <div className="cards__box">
-            <h2 className="cards__text">Название и f(x) (скоро будет)</h2>
-            <button className="cards__like cards__like_active" type="button"></button>
-          </div>
-          <hr className="cards__line" />
-          <p className="cards__time">1ч 22м</p>
-        </li>
-        <li className="cards__item">
-          <img className="cards__image" src="https://images.unsplash.com/photo-1622267607558-624272280d48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" alt="poster"/>
-          <div className="cards__box">
-            <h2 className="cards__text">А тут можно посмотреть фичу по удалению</h2>
-            <button className="cards__dislike" type="button"></button>
-          </div>
-          <hr className="cards__line" />
-          <p className="cards__time">1ч 22м</p>
-        </li> 
-        <li className="cards__item">
-          <img className="cards__image" src="https://images.unsplash.com/photo-1622267607558-624272280d48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" alt="poster"/>
-          <div className="cards__box">
-            <h2 className="cards__text">А пока что верстка</h2>
-            <button className="cards__like" type="button"></button>
-          </div>
-          <hr className="cards__line" />
-          <p className="cards__time">1ч 22м</p>
-        </li> 
-        <li className="cards__item">
-          <img className="cards__image" src="https://images.unsplash.com/photo-1622267607558-624272280d48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" alt="poster"/>
-          <div className="cards__box">
-            <h2 className="cards__text">Начало финиша</h2>
-            <button className="cards__like cards__like_active" type="button"></button>
-          </div>
-          <hr className="cards__line" />
-          <p className="cards__time">1ч 22м</p>
-        </li> 
+        {moviesList}
       </ul>
-    </section> 
+      <button style={showMoreButton()} className="gallery__more-button" onClick={() => downloadMovies()}>Ещё</button>
+    </section>
   );
 }
 
