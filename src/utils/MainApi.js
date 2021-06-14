@@ -1,5 +1,5 @@
 
-const BASE_URL = "//api.qfilms.students.nomoredomains.icu";
+const BASE_URL = "https://api.qfilms.students.nomoredomains.icu";
 
 export function register(name, email, password) {
   return fetch(`${BASE_URL}/signup`, {

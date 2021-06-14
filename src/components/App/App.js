@@ -49,26 +49,43 @@ function App() {
     const { email, password } = data;
     return login(email, password)
       .then((res) => {
-        if (!res || res.statusCode === 400) {
-          setErrorLogin("Что-то пошло не так во время авторизации...")
-          throw new Error('Что-то пошло не так во время авторизации...');
-        }
-        setLoggedIn(true);
-        return localStorage.setItem('jwt', res.token);
+        if (res.token) {
+          localStorage.setItem('jwt', res.token);
+          setLoggedIn(true);
+          setErrorLogin("")
+          history.push('/');
+        }        
       })
       .catch((err) => {
-        setErrorLogin(err);
+        setErrorLogin("Что-то пошло не так во время авторизации...");
         console.log(err);
       });
   }
 
   // проверка токена или остаемся постоянно в системе
   React.useEffect(() => {
+    if (loggedIn) {
+      const jwt = localStorage.getItem('jwt');
+      history.push('/');
+      getUserInfo(jwt)
+      .then((res) => {
+        if (res){
+          setCurrentUser(res.user);
+          setLoggedIn(true);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+  }, [loggedIn, history]);
+
+  React.useEffect(() => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       tokenCheck(jwt);
     }
-  }, [history])
+  }, [])
 
   function tokenCheck(jwt) {
     getUserInfo(jwt)
@@ -83,33 +100,20 @@ function App() {
       })
   }
 
-  // получаем данные пользователя
-  React.useEffect(() => {
-    if (loggedIn) {
-      const jwt = localStorage.getItem('jwt');
-      history.push('/');
-      getUserInfo(jwt)
-        .then((data) => {
-          setCurrentUser(data.user);
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    }
-  }, [loggedIn, history]);
-
   // редактируем профиль
   function handleEditProfile(data) {
     const { name, email } = data;
     const jwt = localStorage.getItem('jwt');
-
-    return updateProfile(name, email, jwt)
+    updateProfile(name, email, jwt)
       .then((res) => {
         if (!res || res.statusCode === 400) {
           setStatusUpdateProfile("Что-то пошло не так во время обновления профиля...")
           throw new Error('Что-то пошло не так во время обновления профиля...');
         }
         setStatusUpdateProfile("Успешно!");
+        setTimeout(() => {
+          setStatusUpdateProfile("");
+        }, 5000);
         setCurrentUser(res.user);
       })
       .catch((err) => {
@@ -121,6 +125,8 @@ function App() {
   // Уходим в туман (деавторизация)
   function signOut() {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('searchedMovies');
+    localStorage.removeItem('searchedSavedMovies');
     setLoggedIn(false);
     setCurrentUser({});
     history.push('/');
