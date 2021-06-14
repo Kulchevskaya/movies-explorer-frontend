@@ -1,0 +1,25 @@
+.App {
+  width: 100%;
+  
+  /* sticky footer */
+  min-height: 100vh;
+  display: block;
+  position: relative;
+  padding-bottom: 179px;
+
+  margin: 0 auto;
+  color: black;     
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .App {
+    padding-bottom: 270px;
+  }
+}
