@@ -18,10 +18,11 @@ function SavedMovies(props) {
         searchMovie={(movies) => props.searchMovie(movies)} 
       />
       <Gallery 
-        movies={props.movies}
+        movies={props.searchedSavedMovies}
+        searchedMovies={props.searchedSavedMovies}
         deleteMovie={props.deleteMovie}
         checked={props.checked}
-        myFilm={true}
+        myFilm={true} 
       />
       <Footer />
     </div>

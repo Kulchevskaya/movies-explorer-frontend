@@ -251,9 +251,10 @@ function App() {
           <ProtectedRoute path='/saved-movies'            
             checked={checked}
             setCheckboxOn={setCheckboxOn} setCheckboxOff={setCheckboxOff}
+            deleteMovie={deleteOneMovie}
             movies={savedMovies} savedMovies={savedMovies}
-            searchedSavedMovies={searchedSavedMovies}
-            deleteMovie={deleteOneMovie} searchMovie={searchSavedMovie}
+            searchedSavedMovies={localSavedMovies}
+            searchMovie={searchSavedMovie}
             loggedIn={loggedIn}
             component={SavedMovies}
             />
