@@ -67,8 +67,6 @@ function App() {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt');
       tokenCheck(jwt);
-    } else {
-      history.push('/signin');
     }
   }, [history])
 
